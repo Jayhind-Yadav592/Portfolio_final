@@ -8,19 +8,249 @@ import {
   Play, 
   Search, 
   Terminal, 
-  Database,
-  BarChart3,
-  TrendingUp,
-  ShieldCheck,
-  Calendar,
-  Layers,
-  Film
+  Database, 
+  BarChart3, 
+  TrendingUp, 
+  ShieldCheck, 
+  Calendar, 
+  Layers, 
+  Film,
+  Sparkles,
+  Bot,
+  Mic,
+  Cpu,
+  Download,
+  Award,
+  Zap
 } from 'lucide-react'
 import { FaPython, FaReact } from 'react-icons/fa6'
-import { SiDjango, SiMysql, SiTailwindcss, SiPostman } from 'react-icons/si'
+import { SiDjango, SiMysql, SiTailwindcss, SiPostman, SiPostgresql } from 'react-icons/si'
 
-export default function ProjectVisual({ visualType, title }) {
+export default function ProjectVisual({ visualType, title, activeSlide = 0 }) {
   switch (visualType) {
+    // 0. ResumeForge AI — ATS Scanner & Mock Interview SaaS (Slide-Wise Visuals)
+    case 'resumeforge':
+      if (activeSlide === 1) {
+        // Slide 2: 3D AI Mock Interview Simulator
+        return (
+          <div className="w-full h-full bg-slate-950 text-slate-100 flex flex-col justify-between p-3.5 relative overflow-hidden font-sans select-none">
+            {/* Ambient Lighting */}
+            <div className="absolute top-0 right-0 w-40 h-40 bg-purple-600/15 rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-600/15 rounded-full blur-2xl pointer-events-none" />
+
+            {/* Top Bar */}
+            <div className="flex items-center justify-between pb-2 border-b border-slate-800/90 relative z-10">
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white shadow-2xs">
+                  <Bot className="w-3.5 h-3.5" />
+                </div>
+                <span className="text-xs font-bold text-white tracking-tight">AI 3D Mock Interviewer</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                  Three.js + Groq LLM
+                </span>
+              </div>
+            </div>
+
+            {/* 3D Simulation HUD Box */}
+            <div className="my-1.5 p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 relative z-10 flex items-center justify-between gap-3">
+              {/* Virtual Interviewer Avatar Box */}
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-gradient-to-b from-indigo-950 via-slate-900 to-purple-950 border border-indigo-500/30 flex flex-col items-center justify-center relative shrink-0 overflow-hidden shadow-inner">
+                <div className="w-8 h-8 rounded-full bg-indigo-500/30 border border-indigo-400/50 flex items-center justify-center relative">
+                  <Bot className="w-4 h-4 text-indigo-300 animate-pulse" />
+                  <div className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-emerald-400 border border-slate-900" />
+                </div>
+                <span className="text-[8px] font-mono text-indigo-300 mt-1">AI Coach</span>
+              </div>
+
+              {/* Question & Audio Waveform */}
+              <div className="flex-1 min-w-0">
+                <div className="text-[9px] font-mono text-purple-400 flex items-center gap-1 mb-0.5">
+                  <Mic className="w-2.5 h-2.5" /> Live Technical Question:
+                </div>
+                <div className="text-[11px] font-semibold text-slate-100 leading-tight truncate">
+                  "Explain Django ORM query optimization & select_related vs prefetch_related."
+                </div>
+
+                {/* Simulated Audio Equalizer Bars */}
+                <div className="flex items-center gap-1 mt-2">
+                  <span className="text-[8px] font-mono text-slate-400 mr-1">Voice Input:</span>
+                  {[40, 75, 100, 60, 85, 30, 95, 70, 45, 90, 65, 35].map((h, i) => (
+                    <span
+                      key={i}
+                      className="w-1 bg-gradient-to-t from-indigo-500 to-purple-400 rounded-full"
+                      style={{ height: `${h * 0.12}px` }}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Evaluation Metrics */}
+            <div className="flex items-center justify-between pt-1.5 border-t border-slate-800/80 text-[9px] font-mono relative z-10">
+              <div className="flex items-center gap-1 text-emerald-400 font-semibold">
+                <Zap className="w-3 h-3 text-amber-400" />
+                <span>Confidence: 96%</span>
+              </div>
+              <div className="flex items-center gap-1 text-sky-400 font-semibold">
+                <span>Technical Accuracy: 9.4/10</span>
+              </div>
+              <div className="text-slate-400">
+                <span>Groq Llama-3 70B</span>
+              </div>
+            </div>
+          </div>
+        )
+      }
+
+      if (activeSlide === 2) {
+        // Slide 3: Multi-Template Resume Builder & Vector PDF Export
+        return (
+          <div className="w-full h-full bg-slate-950 text-slate-100 flex flex-col justify-between p-3.5 relative overflow-hidden font-sans select-none">
+            {/* Top Bar */}
+            <div className="flex items-center justify-between pb-2 border-b border-slate-800/90 relative z-10">
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-emerald-600 to-teal-600 flex items-center justify-center text-white shadow-2xs">
+                  <FileText className="w-3.5 h-3.5" />
+                </div>
+                <span className="text-xs font-bold text-white tracking-tight">Live WYSIWYG Resume Customizer</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                  A4 Vector PDF Ready
+                </span>
+              </div>
+            </div>
+
+            {/* Split Screen Mockup: Editor on Left, Live Rendered Resume on Right */}
+            <div className="grid grid-cols-2 gap-2.5 my-1.5 flex-1 items-center">
+              {/* Left: Input Form Controls */}
+              <div className="h-full rounded-xl bg-slate-900/90 border border-slate-800 p-2 flex flex-col justify-between text-[9px]">
+                <div className="flex items-center justify-between border-b border-slate-800 pb-1 text-slate-400 font-mono">
+                  <span>Sections</span>
+                  <span className="text-emerald-400">Auto-Saved</span>
+                </div>
+                <div className="space-y-1 my-1">
+                  <div className="p-1 rounded bg-slate-950 border border-slate-800 text-slate-300 font-semibold">
+                    ✓ Personal & Contact Info
+                  </div>
+                  <div className="p-1 rounded bg-indigo-950/60 border border-indigo-500/40 text-indigo-200 font-semibold">
+                    ⚡ Experience & Achievements
+                  </div>
+                  <div className="p-1 rounded bg-slate-950 border border-slate-800 text-slate-300 font-semibold">
+                    ✓ Skills & Certifications
+                  </div>
+                </div>
+                <div className="text-[8px] text-slate-400 font-mono">
+                  Theme: <span className="text-indigo-400 font-bold">Tech Executive (Indigo)</span>
+                </div>
+              </div>
+
+              {/* Right: Rendered Resume Document */}
+              <div className="h-full rounded-xl bg-white text-slate-900 p-2.5 flex flex-col justify-between shadow-md border border-slate-200">
+                <div className="border-b-2 border-indigo-600 pb-1">
+                  <div className="text-[11px] font-extrabold text-slate-900 tracking-tight leading-none">JAYHIND YADAV</div>
+                  <div className="text-[8px] font-bold text-indigo-600 font-mono">Full Stack Python Developer</div>
+                </div>
+                <div className="space-y-1 my-1">
+                  <div className="text-[7px] text-slate-700 leading-tight">
+                    <span className="font-bold text-slate-900">Experience:</span> Full Stack Python Dev @ LionIX LLP · Built scalable REST APIs with Django & DRF.
+                  </div>
+                  <div className="text-[7px] text-slate-700 leading-tight">
+                    <span className="font-bold text-slate-900">Skills:</span> Python, Django 5, DRF, PostgreSQL, Docker, Three.js
+                  </div>
+                </div>
+                <div className="pt-1 border-t border-slate-100 flex items-center justify-between text-[7px] font-mono text-slate-500">
+                  <span>100% ATS Safe Layout</span>
+                  <span className="text-indigo-600 font-bold">Page 1 of 1</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Bar */}
+            <div className="flex items-center justify-between pt-1.5 border-t border-slate-800/80 text-[9px] font-mono">
+              <div className="flex items-center gap-1 text-indigo-400 font-semibold">
+                <Download className="w-3 h-3" />
+                <span>Instant PDF Download</span>
+              </div>
+              <div className="flex items-center gap-2 text-slate-400">
+                <span>PostgreSQL Cloud DB Sync</span>
+              </div>
+            </div>
+          </div>
+        )
+      }
+
+      // Slide 1 (Default): ATS Scanner & Score Analysis Dashboard
+      return (
+        <div className="w-full h-full bg-slate-950 text-slate-100 flex flex-col justify-between p-3.5 relative overflow-hidden font-sans select-none">
+          {/* Ambient Lighting */}
+          <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-600/15 rounded-full blur-2xl pointer-events-none" />
+          <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-emerald-600/15 rounded-full blur-2xl pointer-events-none" />
+
+          {/* Top Header */}
+          <div className="flex items-center justify-between pb-2 border-b border-slate-800/90 relative z-10">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-2xs">
+                <ShieldCheck className="w-3.5 h-3.5" />
+              </div>
+              <span className="text-xs font-bold text-white tracking-tight">ATS Resume Intelligence Engine</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                Groq AI Llama-3 Powered
+              </span>
+            </div>
+          </div>
+
+          {/* Core Analytics Cards */}
+          <div className="grid grid-cols-12 gap-2 my-1.5 relative z-10 items-center">
+            {/* ATS Score Gauge Pill */}
+            <div className="col-span-4 rounded-xl bg-slate-900/90 border border-slate-800 p-2 text-center flex flex-col items-center justify-center">
+              <span className="text-[8px] font-mono text-slate-400">ATS Score</span>
+              <div className="text-xl sm:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300 font-mono my-0.5">
+                96<span className="text-xs font-normal text-slate-400">/100</span>
+              </div>
+              <span className="text-[8px] px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-300 font-bold">
+                ✓ Top 5% Rank
+              </span>
+            </div>
+
+            {/* Keyword Match Meter */}
+            <div className="col-span-8 rounded-xl bg-slate-900/90 border border-slate-800 p-2 space-y-1.5 text-[9px]">
+              <div className="flex items-center justify-between text-slate-300">
+                <span className="font-semibold">Target Keyword Density</span>
+                <span className="font-mono text-emerald-400 font-bold">94% Match</span>
+              </div>
+              {/* Progress Bar */}
+              <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden flex">
+                <div className="w-[94%] bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-400 rounded-full" />
+              </div>
+              {/* Skills Found */}
+              <div className="flex flex-wrap gap-1 pt-0.5">
+                <span className="text-[8px] px-1.5 py-0.2 rounded bg-blue-500/20 text-blue-300 font-mono">Python 98%</span>
+                <span className="text-[8px] px-1.5 py-0.2 rounded bg-indigo-500/20 text-indigo-300 font-mono">Django 95%</span>
+                <span className="text-[8px] px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 font-mono">PostgreSQL 92%</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Diagnostics */}
+          <div className="flex items-center justify-between pt-1.5 border-t border-slate-800/80 text-[9px] font-mono relative z-10">
+            <div className="flex items-center gap-1 text-emerald-400">
+              <CheckCircle2 className="w-3 h-3" />
+              <span>Format: 100% Parseable</span>
+            </div>
+            <div className="flex items-center gap-1 text-sky-400">
+              <SiDjango className="w-3 h-3" />
+              <span>Django 5 + DRF Backend</span>
+            </div>
+          </div>
+        </div>
+      )
+
     // 1. E-Commerce Web App (Storefront with sidebar & product cards)
     case 'ecommerce':
       return (

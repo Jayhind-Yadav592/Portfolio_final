@@ -1,5 +1,35 @@
 export const projectsData = [
   {
+    id: 'resumeforge-ai',
+    title: 'ResumeForge AI — ATS Scanner & Mock Interview SaaS',
+    description: 'An AI-powered SaaS platform featuring instant ATS resume score analysis, keyword matching, interactive 3D mock interview simulator, and professional multi-template PDF generation.',
+    technologies: ['Django 5', 'DRF', 'Groq AI', 'PostgreSQL', 'Three.js', 'JavaScript'],
+    visualType: 'resumeforge',
+    featured: true,
+    slides: [
+      {
+        id: 'ats-scanner',
+        badge: 'Slide 1: ATS Scanner',
+        title: 'ATS Resume Score & Keyword Matcher',
+        caption: 'Instant 0-100 ATS compatibility breakdown with missing skills and format verification.',
+      },
+      {
+        id: 'mock-interview',
+        badge: 'Slide 2: 3D Interview',
+        title: 'AI 3D Mock Interview Simulator',
+        caption: 'Real-time Three.js avatar & Groq LLM technical evaluation with feedback scoring.',
+      },
+      {
+        id: 'resume-builder',
+        badge: 'Slide 3: Builder & PDF',
+        title: 'Multi-Template WYSIWYG Builder',
+        caption: 'Interactive live resume customizer with instant ATS-optimized vector PDF export.',
+      },
+    ],
+    github: 'https://github.com/Jayhind-Yadav592/resume',
+    liveDemo: 'https://resume-qvj4xiilu-jayhind-yadavs-projects.vercel.app/',
+  },
+  {
     id: 'ecommerce-web-app',
     title: 'E-commerce Web App',
     description: 'A full-featured e-commerce platform with product listing, cart, payment and order management.',
