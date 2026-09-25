@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, CheckCircle2, AlertCircle, Loader2, Send, MessageCircle } from 'lucide-react'
-import { FaWhatsapp } from 'react-icons/fa6'
-import { validateContactForm, submitContactMessage, generateWhatsAppUrl } from '../../services/contactService'
+import { ArrowRight, CheckCircle2, AlertCircle, Loader2, Send } from 'lucide-react'
+import { FaWhatsapp, FaEnvelope } from 'react-icons/fa6'
+import { validateContactForm, submitContactMessage, generateWhatsAppUrl, generateGmailComposeUrl } from '../../services/contactService'
 import { cn } from '../../utils/cn'
 
 export default function ContactForm() {
@@ -18,7 +18,7 @@ export default function ContactForm() {
   const [formStatus, setFormStatus] = useState('idle') // 'idle' | 'submitting' | 'success' | 'error'
   const [statusMessage, setStatusMessage] = useState('')
   const [lastWhatsAppUrl, setLastWhatsAppUrl] = useState('')
-  const [lastMailtoUrl, setLastMailtoUrl] = useState('')
+  const [lastGmailUrl, setLastGmailUrl] = useState('')
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -63,7 +63,7 @@ export default function ContactForm() {
       setFormStatus('success')
       setStatusMessage(response.message || 'Message sent directly to Jayhind’s email (jayhind01022003@gmail.com)!')
       setLastWhatsAppUrl(response.whatsappUrl || generateWhatsAppUrl(formData))
-      setLastMailtoUrl(response.mailtoUrl || '')
+      setLastGmailUrl(response.gmailComposeUrl || generateGmailComposeUrl(formData))
       setFormData({ name: '', email: '', subject: '', message: '' })
       setTouched({})
     } catch (err) {
@@ -120,7 +120,7 @@ export default function ContactForm() {
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-bold text-emerald-900 text-sm">Message Sent Successfully!</p>
+                  <p className="font-bold text-emerald-900 text-sm">Message Processed Successfully!</p>
                   <p className="text-emerald-700 mt-0.5 font-normal leading-relaxed">
                     {statusMessage}
                   </p>
@@ -130,9 +130,21 @@ export default function ContactForm() {
               {/* Instant follow-up actions */}
               <div className="pt-2 border-t border-emerald-200/80 flex flex-wrap items-center justify-between gap-2.5">
                 <span className="text-xs text-emerald-800 font-medium">
-                  Want an instant reply?
+                  Direct quick actions:
                 </span>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
+                  {lastGmailUrl && (
+                    <a
+                      href={lastGmailUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200/80 font-semibold text-xs shadow-2xs transition-colors cursor-pointer"
+                    >
+                      <FaEnvelope className="w-3.5 h-3.5 text-rose-600" />
+                      <span>Open in Gmail</span>
+                    </a>
+                  )}
+
                   {lastWhatsAppUrl && (
                     <a
                       href={lastWhatsAppUrl}

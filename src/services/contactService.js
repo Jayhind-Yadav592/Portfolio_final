@@ -62,6 +62,26 @@ Sent via Jayhind Yadav Portfolio Website`
 }
 
 /**
+ * Generate direct Gmail Web Compose link
+ */
+export function generateGmailComposeUrl({ name, email, subject, message }) {
+  const body = `Hi Jayhind,
+
+Name: ${name.trim()}
+Email: ${email.trim()}
+Subject: ${subject.trim()}
+
+Message:
+${message.trim()}
+
+-----------------------------------
+Sent via Jayhind Yadav Portfolio Website`
+
+  const su = `[Portfolio Inquiry] ${subject.trim()} - from ${name.trim()}`
+  return `https://mail.google.com/mail/?view=cm&fs=1&to=jayhind01022003@gmail.com&su=${encodeURIComponent(su)}&body=${encodeURIComponent(body)}`
+}
+
+/**
  * Generate formatted Mailto link
  */
 export function generateMailtoUrl({ name, email, subject, message }) {
@@ -97,8 +117,10 @@ export async function submitContactMessage(formData) {
     submittedAt: new Date().toISOString(),
   }
 
+  let isFormSubmitActive = false
+  let activationNotice = ''
+
   // 1. Direct Email Delivery via FormSubmit (delivers directly to jayhind01022003@gmail.com)
-  let emailDelivered = false
   try {
     const emailRes = await fetch('https://formsubmit.co/ajax/jayhind01022003@gmail.com', {
       method: 'POST',
@@ -119,8 +141,12 @@ export async function submitContactMessage(formData) {
       }),
     })
 
-    if (emailRes.ok) {
-      emailDelivered = true
+    const data = await emailRes.json()
+    if (data.success === 'true' || data.success === true) {
+      isFormSubmitActive = true
+    } else if (data.message && data.message.includes('Activation')) {
+      activationNotice =
+        'FormSubmit has sent a 1-time activation link to jayhind01022003@gmail.com (check Inbox/Spam). Click "Activate Form" once to enable instant email alerts!'
     }
   } catch (err) {
     console.warn('FormSubmit email forwarding notice:', err)
@@ -142,8 +168,11 @@ export async function submitContactMessage(formData) {
       if (apiResult.success) {
         return {
           success: true,
-          message: 'Your message has been sent directly to Jayhind’s email (jayhind01022003@gmail.com) and saved to database!',
+          message:
+            activationNotice ||
+            'Your message has been sent directly to Jayhind’s email (jayhind01022003@gmail.com) and saved to database!',
           whatsappUrl: generateWhatsAppUrl(payload),
+          gmailComposeUrl: generateGmailComposeUrl(payload),
           mailtoUrl: generateMailtoUrl(payload),
           data: apiResult.data || payload,
         }
@@ -153,32 +182,13 @@ export async function submitContactMessage(formData) {
     // API optional fallback
   }
 
-  // 3. Web3Forms fallback if FormSubmit had network issue
-  if (!emailDelivered) {
-    try {
-      await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          access_key: 'e39da327-0cfc-4a37-b4d6-843818e69fa0',
-          to_email: 'jayhind01022003@gmail.com',
-          from_name: `${payload.name} (Portfolio Inquiry)`,
-          subject: `[Portfolio Inquiry] ${payload.subject}`,
-          name: payload.name,
-          email: payload.email,
-          message: `Name: ${payload.name}\nEmail: ${payload.email}\nSubject: ${payload.subject}\n\nMessage:\n${payload.message}`,
-        }),
-      })
-    } catch (_) {}
-  }
-
   return {
     success: true,
-    message: 'Your message has been sent directly to Jayhind’s email (jayhind01022003@gmail.com)!',
+    message:
+      activationNotice ||
+      'Your message has been sent directly to Jayhind’s email (jayhind01022003@gmail.com)!',
     whatsappUrl: generateWhatsAppUrl(payload),
+    gmailComposeUrl: generateGmailComposeUrl(payload),
     mailtoUrl: generateMailtoUrl(payload),
     data: payload,
   }
