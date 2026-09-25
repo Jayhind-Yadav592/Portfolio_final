@@ -1,3 +1,9 @@
+import resumeforge1 from '../assets/projects/resumeforge-1-landing.png'
+import resumeforge2 from '../assets/projects/resumeforge-2-dashboard.png'
+import resumeforge3 from '../assets/projects/resumeforge-3-analyzing.png'
+import resumeforge4 from '../assets/projects/resumeforge-4-scorecard.png'
+import resumeforge5 from '../assets/projects/resumeforge-5-mock-interview.png'
+
 export const projectsData = [
   {
     id: 'resumeforge-ai',
@@ -8,22 +14,39 @@ export const projectsData = [
     featured: true,
     slides: [
       {
-        id: 'ats-scanner',
-        badge: 'Slide 1: ATS Scanner',
-        title: 'ATS Resume Score & Keyword Matcher',
-        caption: 'Instant 0-100 ATS compatibility breakdown with missing skills and format verification.',
+        id: 'landing',
+        image: resumeforge1,
+        badge: 'Slide 1: Landing & Hero',
+        title: 'AI Resume & Practice Prep Landing',
+        caption: 'Instant ATS resume scoring, single-column LaTeX builder, timed MCQs & speech AI mock interview.',
+      },
+      {
+        id: 'dashboard',
+        image: resumeforge2,
+        badge: 'Slide 2: Trajectory Dashboard',
+        title: 'ATS Score & Analytics Dashboard',
+        caption: 'Real-time score progress across analyzed resume versions, baseline vs latest score trajectory.',
+      },
+      {
+        id: 'analyzing',
+        image: resumeforge3,
+        badge: 'Slide 3: Real-Time Parser',
+        title: 'Semantic Parsing & Extraction Engine',
+        caption: 'Extracting text structure, measuring semantic keyword match & formatting scores with polling async worker.',
+      },
+      {
+        id: 'scorecard',
+        image: resumeforge4,
+        badge: 'Slide 4: Detailed Scorecard',
+        title: 'Target Position Match & Skill Gaps',
+        caption: 'Detailed breakdown of Keyword Overlap, LaTeX Structure, and 1-click free courses for missing skills.',
       },
       {
         id: 'mock-interview',
-        badge: 'Slide 2: 3D Interview',
-        title: 'AI 3D Mock Interview Simulator',
-        caption: 'Real-time Three.js avatar & Groq LLM technical evaluation with feedback scoring.',
-      },
-      {
-        id: 'resume-builder',
-        badge: 'Slide 3: Builder & PDF',
-        title: 'Multi-Template WYSIWYG Builder',
-        caption: 'Interactive live resume customizer with instant ATS-optimized vector PDF export.',
+        image: resumeforge5,
+        badge: 'Slide 5: 3D Mock Interview',
+        title: 'Google Meet Style AI Mock Session',
+        caption: 'Camera & mic check, role configuration for Fullstack Python Dev, live speech subtitles & instant scoring.',
       },
     ],
     github: 'https://github.com/Jayhind-Yadav592/resume',

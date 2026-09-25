@@ -44,21 +44,33 @@ export default function ProjectCard({ project }) {
       {/* 16:9 Large Project Preview Image / Carousel Frame */}
       <div className="aspect-[16/9] w-full relative overflow-hidden bg-slate-950 border-b border-slate-100 rounded-t-2xl select-none">
         
-        {/* Visual Mockup with Slide State */}
+        {/* Visual Mockup or Real Screenshot with Slide State */}
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
-            initial={{ opacity: 0.4, scale: 0.98 }}
+            initial={{ opacity: 0.3, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0.4, scale: 1.02 }}
+            exit={{ opacity: 0.3, scale: 1.02 }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
-            className="w-full h-full"
+            className="w-full h-full relative"
           >
-            <ProjectVisual
-              visualType={project.visualType}
-              title={project.title}
-              activeSlide={currentSlide}
-            />
+            {currentSlideInfo?.image ? (
+              <div className="w-full h-full relative bg-slate-950 overflow-hidden">
+                <img
+                  src={currentSlideInfo.image}
+                  alt={currentSlideInfo.title || project.title}
+                  className="w-full h-full object-cover object-top hover:scale-[1.02] transition-transform duration-500"
+                  loading="eager"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-slate-950/20 pointer-events-none" />
+              </div>
+            ) : (
+              <ProjectVisual
+                visualType={project.visualType}
+                title={project.title}
+                activeSlide={currentSlide}
+              />
+            )}
           </motion.div>
         </AnimatePresence>
 
