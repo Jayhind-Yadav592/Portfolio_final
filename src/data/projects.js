@@ -13,7 +13,7 @@ export const projectsData = [
   {
     id: 'resumeforge-ai',
     title: 'ResumeForge AI — ATS Scanner & Mock Interview SaaS',
-    description: 'An AI-powered SaaS platform featuring instant ATS resume score analysis, keyword matching, interactive 3D mock interview simulator, and professional multi-template PDF generation.',
+    description: 'Production-grade AI SaaS platform engineered with real-time ATS scoring, LaTeX resume studio, 3D voice mock interviews, and interactive coding assessments.',
     technologies: ['Django 5', 'DRF', 'Groq AI', 'PostgreSQL', 'Three.js', 'JavaScript'],
     visualType: 'resumeforge',
     featured: true,

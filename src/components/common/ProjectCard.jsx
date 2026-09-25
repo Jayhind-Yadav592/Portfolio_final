@@ -151,18 +151,6 @@ export default function ProjectCard({ project }) {
             {project.description}
           </p>
 
-          {/* Slide-specific Caption (if currently active slide has caption) */}
-          {currentSlideInfo && (
-            <div className="mb-4 p-2 rounded-xl bg-blue-50/70 border border-blue-100/90 text-slate-700 text-xs">
-              <span className="font-bold text-blue-700 block text-[11px] mb-0.5">
-                {currentSlideInfo.title}
-              </span>
-              <p className="text-[11px] text-slate-600 leading-snug">
-                {currentSlideInfo.caption}
-              </p>
-            </div>
-          )}
-
           {/* Technology Badges */}
           <div className="flex flex-wrap gap-1.5 mb-5">
             {project.technologies.map((tech) => (
