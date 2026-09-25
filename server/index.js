@@ -71,19 +71,21 @@ app.post('/api/contact', async (req, res) => {
 
     console.log(`📥 New contact saved in Neon PostgreSQL! ID: ${savedContact.id} from ${name} (${email})`)
 
-    // Also forward to Web3Forms in background for instant email notification
+    // Also forward to FormSubmit in background for instant direct email notification
     try {
-      fetch('https://api.web3forms.com/submit', {
+      fetch('https://formsubmit.co/ajax/jayhind01022003@gmail.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          access_key: 'e39da327-0cfc-4a37-b4d6-843818e69fa0',
-          to_email: 'jayhind01022003@gmail.com',
-          from_name: `${name} (Portfolio Inquiry)`,
-          subject: `[Portfolio Inquiry] ${subject}`,
           name: name,
           email: email,
-          message: `Neon DB Contact ID: #${savedContact.id}\nName: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`,
+          _replyto: email,
+          _subject: `[Portfolio Inquiry] ${subject} - from ${name}`,
+          subject: subject,
+          message: message,
+          neon_db_id: savedContact.id,
+          _template: 'table',
+          _captcha: 'false',
         }),
       }).catch(() => {})
     } catch (_) {}

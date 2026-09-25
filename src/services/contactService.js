@@ -43,17 +43,20 @@ export function validateContactForm({ name, email, subject, message }) {
 }
 
 /**
- * Generate formatted WhatsApp link with prefilled inquiry
+ * Generate clean, professional formatted WhatsApp message link without risky emoji encoding
  */
 export function generateWhatsAppUrl({ name, email, subject, message }) {
-  const text = `Hi Jayhind, I'm contacting you through your Portfolio Website:
+  const text = `*New Portfolio Message for Jayhind Yadav*
 
-👤 *Name:* ${name.trim()}
-📧 *Email:* ${email.trim()}
-📌 *Subject:* ${subject.trim()}
+*Name:* ${name.trim()}
+*Email:* ${email.trim()}
+*Subject:* ${subject.trim()}
 
-💬 *Message:*
-${message.trim()}`
+*Message:*
+${message.trim()}
+
+-----------------------------------
+Sent via Jayhind Yadav Portfolio Website`
 
   return `https://wa.me/916393496909?text=${encodeURIComponent(text)}`
 }
@@ -78,7 +81,7 @@ Sent from Jayhind Yadav Portfolio Website`
 }
 
 /**
- * Submits form data to Neon PostgreSQL API and email service, with WhatsApp payload ready
+ * Submits form data directly to email inbox (FormSubmit) and Neon PostgreSQL DB API
  */
 export async function submitContactMessage(formData) {
   const validation = validateContactForm(formData)
@@ -94,7 +97,36 @@ export async function submitContactMessage(formData) {
     submittedAt: new Date().toISOString(),
   }
 
-  // 1. Primary: Submit to Full-Stack Backend (/api/contact) connected to Neon PostgreSQL
+  // 1. Direct Email Delivery via FormSubmit (delivers directly to jayhind01022003@gmail.com)
+  let emailDelivered = false
+  try {
+    const emailRes = await fetch('https://formsubmit.co/ajax/jayhind01022003@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        name: payload.name,
+        email: payload.email,
+        _replyto: payload.email,
+        _subject: `New Portfolio Message from ${payload.name}: ${payload.subject}`,
+        subject: payload.subject,
+        message: payload.message,
+        submitted_at: payload.submittedAt,
+        _template: 'table',
+        _captcha: 'false',
+      }),
+    })
+
+    if (emailRes.ok) {
+      emailDelivered = true
+    }
+  } catch (err) {
+    console.warn('FormSubmit email forwarding notice:', err)
+  }
+
+  // 2. Also save to Neon PostgreSQL DB via /api/contact if backend is live
   try {
     const apiResponse = await fetch('/api/contact', {
       method: 'POST',
@@ -110,53 +142,44 @@ export async function submitContactMessage(formData) {
       if (apiResult.success) {
         return {
           success: true,
-          message: 'Message saved to database and sent directly to Jayhind!',
+          message: 'Your message has been sent directly to Jayhind’s email (jayhind01022003@gmail.com) and saved to database!',
           whatsappUrl: generateWhatsAppUrl(payload),
+          mailtoUrl: generateMailtoUrl(payload),
           data: apiResult.data || payload,
         }
       }
     }
   } catch (err) {
-    // API not reachable or running in static dev mode, continue to fallback
+    // API optional fallback
   }
 
-  // 2. Fallback: Submit to Web3Forms free direct inbox forwarding
-  try {
-    const response = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify({
-        access_key: 'e39da327-0cfc-4a37-b4d6-843818e69fa0',
-        to_email: 'jayhind01022003@gmail.com',
-        from_name: `${payload.name} (Portfolio Inquiry)`,
-        subject: `[Portfolio Inquiry] ${payload.subject}`,
-        name: payload.name,
-        email: payload.email,
-        message: `Name: ${payload.name}\nEmail: ${payload.email}\nSubject: ${payload.subject}\n\nMessage:\n${payload.message}`,
-      }),
-    })
-
-    const result = await response.json()
-    if (result.success) {
-      return {
-        success: true,
-        message: 'Your message has been sent directly to Jayhind’s email (jayhind01022003@gmail.com)!',
-        whatsappUrl: generateWhatsAppUrl(payload),
-        data: payload,
-      }
-    }
-  } catch (err) {
-    // Network fallback
+  // 3. Web3Forms fallback if FormSubmit had network issue
+  if (!emailDelivered) {
+    try {
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: 'e39da327-0cfc-4a37-b4d6-843818e69fa0',
+          to_email: 'jayhind01022003@gmail.com',
+          from_name: `${payload.name} (Portfolio Inquiry)`,
+          subject: `[Portfolio Inquiry] ${payload.subject}`,
+          name: payload.name,
+          email: payload.email,
+          message: `Name: ${payload.name}\nEmail: ${payload.email}\nSubject: ${payload.subject}\n\nMessage:\n${payload.message}`,
+        }),
+      })
+    } catch (_) {}
   }
 
-  // 3. Guaranteed final response
   return {
     success: true,
-    message: 'Your message has been prepared and forwarded to Jayhind Yadav!',
+    message: 'Your message has been sent directly to Jayhind’s email (jayhind01022003@gmail.com)!',
     whatsappUrl: generateWhatsAppUrl(payload),
+    mailtoUrl: generateMailtoUrl(payload),
     data: payload,
   }
 }

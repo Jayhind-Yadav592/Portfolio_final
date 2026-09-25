@@ -18,6 +18,7 @@ export default function ContactForm() {
   const [formStatus, setFormStatus] = useState('idle') // 'idle' | 'submitting' | 'success' | 'error'
   const [statusMessage, setStatusMessage] = useState('')
   const [lastWhatsAppUrl, setLastWhatsAppUrl] = useState('')
+  const [lastMailtoUrl, setLastMailtoUrl] = useState('')
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -60,8 +61,9 @@ export default function ContactForm() {
     try {
       const response = await submitContactMessage(formData)
       setFormStatus('success')
-      setStatusMessage(response.message || 'Message sent directly to Jayhind’s email!')
+      setStatusMessage(response.message || 'Message sent directly to Jayhind’s email (jayhind01022003@gmail.com)!')
       setLastWhatsAppUrl(response.whatsappUrl || generateWhatsAppUrl(formData))
+      setLastMailtoUrl(response.mailtoUrl || '')
       setFormData({ name: '', email: '', subject: '', message: '' })
       setTouched({})
     } catch (err) {
@@ -125,23 +127,25 @@ export default function ContactForm() {
                 </div>
               </div>
 
-              {/* Instant WhatsApp follow-up action */}
-              {lastWhatsAppUrl && (
-                <div className="pt-2 border-t border-emerald-200/80 flex flex-wrap items-center justify-between gap-2.5">
-                  <span className="text-xs text-emerald-800 font-medium">
-                    Want an instant reply?
-                  </span>
-                  <a
-                    href={lastWhatsAppUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs shadow-xs transition-colors cursor-pointer"
-                  >
-                    <FaWhatsapp className="w-4 h-4" />
-                    <span>Chat on WhatsApp</span>
-                  </a>
+              {/* Instant follow-up actions */}
+              <div className="pt-2 border-t border-emerald-200/80 flex flex-wrap items-center justify-between gap-2.5">
+                <span className="text-xs text-emerald-800 font-medium">
+                  Want an instant reply?
+                </span>
+                <div className="flex items-center gap-2">
+                  {lastWhatsAppUrl && (
+                    <a
+                      href={lastWhatsAppUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs shadow-xs transition-colors cursor-pointer"
+                    >
+                      <FaWhatsapp className="w-4 h-4" />
+                      <span>Chat on WhatsApp</span>
+                    </a>
+                  )}
                 </div>
-              )}
+              </div>
             </motion.div>
           )}
 
