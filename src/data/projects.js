@@ -3,6 +3,11 @@ import resumeforge2 from '../assets/projects/resumeforge-2-dashboard.png'
 import resumeforge3 from '../assets/projects/resumeforge-3-analyzing.png'
 import resumeforge4 from '../assets/projects/resumeforge-4-scorecard.png'
 import resumeforge5 from '../assets/projects/resumeforge-5-mock-interview.png'
+import resumeforge6 from '../assets/projects/resumeforge-6-live-interview.png'
+import resumeforge7 from '../assets/projects/resumeforge-7-latex-builder.png'
+import resumeforge8 from '../assets/projects/resumeforge-8-question-bank.png'
+import resumeforge9 from '../assets/projects/resumeforge-9-mcq-arena.png'
+import resumeforge10 from '../assets/projects/resumeforge-10-compiler.png'
 
 export const projectsData = [
   {
@@ -47,6 +52,41 @@ export const projectsData = [
         badge: 'Slide 5: 3D Mock Interview',
         title: 'Google Meet Style AI Mock Session',
         caption: 'Camera & mic check, role configuration for Fullstack Python Dev, live speech subtitles & instant scoring.',
+      },
+      {
+        id: 'live-interview',
+        image: resumeforge6,
+        badge: 'Slide 6: Live Interview Room',
+        title: 'Live AI Technical Interview Room',
+        caption: 'Speech-to-text candidate transcription, AI interviewer speaking, WPM pacing & filler word tracking.',
+      },
+      {
+        id: 'latex-builder',
+        image: resumeforge7,
+        badge: 'Slide 7: LaTeX Resume Studio',
+        title: 'ATS Resume Studio (LaTeX Engine)',
+        caption: 'Interactive single-column LaTeX editor, Auto-Tailor with JD, live A4 rendered document & instant PDF export.',
+      },
+      {
+        id: 'question-bank',
+        image: resumeforge8,
+        badge: 'Slide 8: Question Bank',
+        title: 'Top Tech Company Question Bank',
+        caption: 'High-yield technical & system design questions categorized for Google, Amazon, TCS, Infosys, Meta, and Wipro.',
+      },
+      {
+        id: 'mcq-arena',
+        image: resumeforge9,
+        badge: 'Slide 9: MCQ Assessment',
+        title: 'Topic-Wise Technical MCQ Assessments',
+        caption: '15-question timed assessments across Python, JavaScript, Django & DRF, DSA, SQL, and DevOps.',
+      },
+      {
+        id: 'compiler',
+        image: resumeforge10,
+        badge: 'Slide 10: Online Compiler',
+        title: 'Freeform Online Compiler & Code Arena',
+        caption: 'Multi-language code editor with live execution console, test case validation & AI coding assistant.',
       },
     ],
     github: 'https://github.com/Jayhind-Yadav592/resume',

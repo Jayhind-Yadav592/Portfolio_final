@@ -114,23 +114,25 @@ export default function ProjectCard({ project }) {
             </button>
 
             {/* Bottom Slide Dot Indicators */}
-            <div className="absolute bottom-2 inset-x-0 z-30 flex items-center justify-center gap-1.5 pointer-events-auto">
-              {project.slides.map((slide, idx) => (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    setCurrentSlide(idx)
-                  }}
-                  aria-label={`Go to slide ${idx + 1}`}
-                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                    currentSlide === idx
-                      ? 'w-6 bg-blue-500 shadow-sm'
-                      : 'w-1.5 bg-white/40 hover:bg-white/80'
-                  }`}
-                />
-              ))}
+            <div className="absolute bottom-2 inset-x-0 z-30 flex items-center justify-center pointer-events-auto">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-950/60 backdrop-blur-md border border-white/10 shadow-xs">
+                {project.slides.map((slide, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setCurrentSlide(idx)
+                    }}
+                    aria-label={`Go to slide ${idx + 1}`}
+                    className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                      currentSlide === idx
+                        ? 'w-5 bg-blue-500 shadow-sm'
+                        : 'w-1.5 bg-white/40 hover:bg-white/90'
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
           </>
         )}
