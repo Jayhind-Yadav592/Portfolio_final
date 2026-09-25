@@ -127,37 +127,23 @@ export default function ContactForm() {
                 </div>
               </div>
 
-              {/* Instant follow-up actions */}
-              <div className="pt-2 border-t border-emerald-200/80 flex flex-wrap items-center justify-between gap-2.5">
-                <span className="text-xs text-emerald-800 font-medium">
-                  Direct quick actions:
-                </span>
-                <div className="flex flex-wrap items-center gap-2">
-                  {lastGmailUrl && (
-                    <a
-                      href={lastGmailUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200/80 font-semibold text-xs shadow-2xs transition-colors cursor-pointer"
-                    >
-                      <FaEnvelope className="w-3.5 h-3.5 text-rose-600" />
-                      <span>Open in Gmail</span>
-                    </a>
-                  )}
-
-                  {lastWhatsAppUrl && (
-                    <a
-                      href={lastWhatsAppUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs shadow-xs transition-colors cursor-pointer"
-                    >
-                      <FaWhatsapp className="w-4 h-4" />
-                      <span>Chat on WhatsApp</span>
-                    </a>
-                  )}
+              {/* Instant follow-up action */}
+              {lastWhatsAppUrl && (
+                <div className="pt-2 border-t border-emerald-200/80 flex flex-wrap items-center justify-between gap-2.5">
+                  <span className="text-xs text-emerald-800 font-medium">
+                    Want an instant reply?
+                  </span>
+                  <a
+                    href={lastWhatsAppUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs shadow-xs transition-colors cursor-pointer"
+                  >
+                    <FaWhatsapp className="w-4 h-4" />
+                    <span>Chat on WhatsApp</span>
+                  </a>
                 </div>
-              </div>
+              )}
             </motion.div>
           )}
 
