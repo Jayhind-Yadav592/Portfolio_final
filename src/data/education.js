@@ -1,0 +1,41 @@
+export const educationList = [
+  {
+    id: 'btech',
+    degree: 'Bachelor of Technology (B.Tech)',
+    specialization: 'Computer Science and Engineering',
+    institution: 'Kasireddy Narayanreddy College of Engineering and Research',
+    duration: '2022 – 2026',
+    location: 'Hyderabad, India',
+    status: 'Completed',
+    statusType: 'completed',
+    iconType: 'graduation',
+    imageType: 'college',
+    description: 'Completed B.Tech in Computer Science and Engineering with a focus on web development, software engineering, REST APIs, and scalable architecture.',
+  },
+  {
+    id: 'intermediate',
+    degree: 'Intermediate (Class 12)',
+    specialization: 'Secondary Education (UP Board)',
+    institution: 'J.P. Inter College',
+    duration: '2020 – 2022',
+    location: 'Uttar Pradesh, India',
+    status: 'Completed',
+    statusType: 'completed', // green pill
+    iconType: 'book',
+    imageType: 'senior-school',
+    description: 'Completed intermediate education under the Uttar Pradesh Board of High School and Intermediate Education with a focus on science and analytics.',
+  },
+  {
+    id: 'matriculation',
+    degree: 'Matriculation (Class 10)',
+    specialization: 'SSC (Maharashtra State Board)',
+    institution: 'Chacha Nehru Hindi High School',
+    duration: '2018 – 2020',
+    location: 'Maharashtra, India',
+    status: 'Completed',
+    statusType: 'completed-purple', // purple/green pill
+    iconType: 'school',
+    imageType: 'high-school',
+    description: 'Completed secondary school certificate (SSC) education under the Maharashtra State Board with strong fundamentals in Science and Mathematics.',
+  },
+]
