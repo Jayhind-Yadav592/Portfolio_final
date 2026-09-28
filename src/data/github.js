@@ -12,8 +12,8 @@ export const codingJourneyData = {
     role: 'Full Stack Python Developer',
     profileUrl: 'https://github.com/Jayhind-Yadav592',
     stats: [
-      { label: 'Repositories', value: '20+', detail: 'Public projects & tools' },
-      { label: 'Contributions', value: '500+', detail: 'Version controlled commits' },
+      { label: 'Repositories', value: '60+', detail: 'Public projects & tools' },
+      { label: 'Contributions', value: '250+', detail: 'Version controlled commits' },
       { label: 'Pull Requests', value: '50+', detail: 'Merged & reviewed' },
       { label: 'Code Quality', value: 'A+', detail: 'Clean architecture' },
     ],

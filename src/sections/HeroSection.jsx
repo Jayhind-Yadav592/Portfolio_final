@@ -35,7 +35,7 @@ export default function HeroSection() {
 
   const heroStats = [
     {
-      value: '20+',
+      value: '60+',
       label: 'Projects Built',
       icon: FolderGit2,
       color: 'text-blue-600',
@@ -45,7 +45,7 @@ export default function HeroSection() {
       glow: 'bg-blue-500/5',
     },
     {
-      value: '10+',
+      value: '15+',
       label: 'Technologies',
       icon: Code2,
       color: 'text-emerald-600',
@@ -55,7 +55,7 @@ export default function HeroSection() {
       glow: 'bg-emerald-500/5',
     },
     {
-      value: '500+',
+      value: '250+',
       label: 'GitHub Contributions',
       icon: GitCommit,
       color: 'text-purple-600',
