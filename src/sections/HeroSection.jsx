@@ -188,7 +188,9 @@ export default function HeroSection() {
               </Button>
 
               <a
-                href="#contact"
+                href={profileData.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 hover:text-blue-600 border border-slate-300 hover:border-blue-400 text-xs font-semibold shadow-2xs transition-all duration-200 group"
               >
                 <FileText className="w-3.5 h-3.5 text-blue-600 group-hover:scale-110 transition-transform" />
@@ -350,7 +352,9 @@ export default function HeroSection() {
 
               {/* Professional Resume / CV Button */}
               <a
-                href="#contact"
+                href={profileData.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 hover:text-blue-600 border border-slate-300/90 hover:border-blue-400 text-xs sm:text-sm font-semibold shadow-xs hover:shadow transition-all duration-200 cursor-pointer group"
               >
                 <FileText className="w-4 h-4 text-blue-600 group-hover:scale-110 transition-transform" />

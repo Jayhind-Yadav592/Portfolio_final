@@ -10,6 +10,7 @@ export const profileData = {
   currentRole: 'Full Stack Python Developer',
   headline: "Hi, I'm Jayhind Yadav",
   tagline: "I'm a Full Stack Python Developer based in Hyderabad, building backend-heavy web applications with a focus on clean architecture and real-world problem solving.",
+  resumeUrl: 'https://drive.google.com/file/d/1GjDR-CftuIMxHU_0gIQXm0_pVvNZ-QUJ/view?usp=sharing',
   availability: 'Available for Opportunities',
   bio: [
     "Hi, I'm Jayhind Yadav — a Full Stack Python Developer based in Hyderabad, India. I completed my B.Tech in Computer Science from Kasireddy Narayanreddy College in 2026, and since then I've been building backend-heavy web applications with a focus on clean architecture and real-world problem solving.",
