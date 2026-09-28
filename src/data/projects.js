@@ -9,6 +9,12 @@ import resumeforge8 from '../assets/projects/resumeforge-8-question-bank.png'
 import resumeforge9 from '../assets/projects/resumeforge-9-mcq-arena.png'
 import resumeforge10 from '../assets/projects/resumeforge-10-compiler.png'
 
+import antixor1 from '../assets/projects/antixor-1-landing.png'
+import antixor2 from '../assets/projects/antixor-2-store.png'
+import antixor3 from '../assets/projects/antixor-3-telehealth.png'
+import antixor4 from '../assets/projects/antixor-4-consultation-room.png'
+import antixor5 from '../assets/projects/antixor-5-ehr-dashboard.png'
+
 export const projectsData = [
   {
     id: 'resumeforge-ai',
@@ -17,6 +23,7 @@ export const projectsData = [
     technologies: ['Django 5', 'DRF', 'Groq AI', 'PostgreSQL', 'Three.js', 'JavaScript'],
     visualType: 'resumeforge',
     featured: true,
+    featuredBadge: 'Featured SaaS',
     slides: [
       {
         id: 'landing',
@@ -91,6 +98,49 @@ export const projectsData = [
     ],
     github: 'https://github.com/Jayhind-Yadav592/resume',
     liveDemo: 'https://resume-qvj4xiilu-jayhind-yadavs-projects.vercel.app/',
+  },
+  {
+    id: 'antixor-medos',
+    title: 'Antixor MedOS — Enterprise Telehealth, Clinical Pharmacy & EHR Platform',
+    description: 'Enterprise clinical telehealth & e-pharmacy platform featuring AI prescription OCR, Leaflet GIS hospital radar, WebRTC live consultations, and EHR telemetry tracking.',
+    technologies: ['Django 5', 'DRF', 'PostgreSQL', 'Leaflet GIS', 'Bootstrap 5', 'JavaScript'],
+    visualType: 'antixor',
+    featured: true,
+    featuredBadge: 'Featured HealthTech',
+    slides: [
+      {
+        id: 'landing',
+        image: antixor1,
+        badge: 'Slide 1: Telehealth Portal',
+        title: 'Antixor Pharmacy & Telehealth Hub',
+      },
+      {
+        id: 'store',
+        image: antixor2,
+        badge: 'Slide 2: Clinical E-Pharmacy',
+        title: 'Formulations Catalog & Express Delivery',
+      },
+      {
+        id: 'telehealth',
+        image: antixor3,
+        badge: 'Slide 3: Specialist Network',
+        title: 'Virtual Clinical Care & Specialist Doctors',
+      },
+      {
+        id: 'consultation-room',
+        image: antixor4,
+        badge: 'Slide 4: Live Telehealth Room',
+        title: 'Encrypted Video Consultation & Live EHR',
+      },
+      {
+        id: 'ehr-dashboard',
+        image: antixor5,
+        badge: 'Slide 5: Patient EHR Dashboard',
+        title: 'MedOS EHR, Biometrics & Pill Reminders',
+      },
+    ],
+    github: 'https://github.com/Jayhind-Yadav592/medical',
+    liveDemo: 'https://medical-51omgj72e-jayhind-yadavs-projects.vercel.app/',
   },
   {
     id: 'ecommerce-web-app',

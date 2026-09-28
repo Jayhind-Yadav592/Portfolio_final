@@ -81,7 +81,7 @@ export default function ProjectCard({ project }) {
             {project.featured && (
               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-600/90 backdrop-blur-md text-white text-[10px] font-bold shadow-xs">
                 <Sparkles className="w-2.5 h-2.5" />
-                <span>Featured SaaS</span>
+                <span>{project.featuredBadge || 'Featured'}</span>
               </span>
             )}
 

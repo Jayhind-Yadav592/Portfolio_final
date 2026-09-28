@@ -21,7 +21,9 @@ import {
   Cpu,
   Download,
   Award,
-  Zap
+  Zap,
+  Activity,
+  MapPin
 } from 'lucide-react'
 import { FaPython, FaReact } from 'react-icons/fa6'
 import { SiDjango, SiMysql, SiTailwindcss, SiPostman, SiPostgresql } from 'react-icons/si'
@@ -251,7 +253,64 @@ export default function ProjectVisual({ visualType, title, activeSlide = 0 }) {
         </div>
       )
 
-    // 1. E-Commerce Web App (Storefront with sidebar & product cards)
+    // 1. Antixor MedOS — Telehealth & EHR Platform Visual Mockup
+    case 'antixor':
+      return (
+        <div className="w-full h-full bg-slate-950 text-slate-100 flex flex-col justify-between p-3.5 relative overflow-hidden font-sans select-none">
+          {/* Ambient Lighting */}
+          <div className="absolute top-0 right-0 w-40 h-40 bg-emerald-600/15 rounded-full blur-2xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-40 h-40 bg-teal-600/15 rounded-full blur-2xl pointer-events-none" />
+
+          {/* Top Bar */}
+          <div className="flex items-center justify-between pb-2 border-b border-slate-800/90 relative z-10">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-emerald-600 to-teal-600 flex items-center justify-center text-white shadow-2xs">
+                <Activity className="w-3.5 h-3.5" />
+              </div>
+              <span className="text-xs font-bold text-white tracking-tight">Antixor MedOS EHR</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                Django 5 + Neon PG
+              </span>
+            </div>
+          </div>
+
+          {/* Biometrics & Telehealth Grid */}
+          <div className="grid grid-cols-3 gap-2 my-1.5 relative z-10">
+            <div className="rounded-xl bg-slate-900/90 border border-slate-800 p-2 text-center">
+              <span className="text-[8px] font-mono text-slate-400 block">Adherence</span>
+              <span className="text-sm font-bold text-emerald-400 font-mono">14 Days</span>
+              <span className="text-[7px] text-slate-500 block">100% on track</span>
+            </div>
+            <div className="rounded-xl bg-slate-900/90 border border-slate-800 p-2 text-center">
+              <span className="text-[8px] font-mono text-slate-400 block">Blood Pressure</span>
+              <span className="text-sm font-bold text-sky-400 font-mono">118/78</span>
+              <span className="text-[7px] text-slate-500 block">72 bpm · Optimal</span>
+            </div>
+            <div className="rounded-xl bg-slate-900/90 border border-slate-800 p-2 text-center">
+              <span className="text-[8px] font-mono text-slate-400 block">Hospital Radar</span>
+              <span className="text-sm font-bold text-teal-400 font-mono">GIS Map</span>
+              <span className="text-[7px] text-slate-500 block">Nearest 24/7 ER</span>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="flex items-center justify-between pt-1.5 border-t border-slate-800/80 text-[9px] font-mono relative z-10">
+            <div className="flex items-center gap-1 text-emerald-400">
+              <CheckCircle2 className="w-3 h-3" />
+              <span>Prescription OCR Verified</span>
+            </div>
+            <div className="flex items-center gap-1 text-slate-400">
+              <MapPin className="w-3 h-3 text-teal-400" />
+              <span>Leaflet GIS Enabled</span>
+            </div>
+          </div>
+        </div>
+      )
+
+    // 2. E-Commerce Web App (Storefront with sidebar & product cards)
     case 'ecommerce':
       return (
         <div className="w-full h-full bg-slate-900 text-slate-100 flex overflow-hidden font-sans select-none relative">
