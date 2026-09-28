@@ -62,7 +62,7 @@ export default function ProjectCard({ project }) {
                   className="w-full h-full object-cover object-top hover:scale-[1.02] transition-transform duration-500"
                   loading="eager"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-slate-950/20 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
               </div>
             ) : (
               <ProjectVisual
