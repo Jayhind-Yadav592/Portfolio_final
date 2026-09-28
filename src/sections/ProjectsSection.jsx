@@ -49,13 +49,13 @@ export default function ProjectsSection() {
           </p>
         </div>
 
-        {/* 3-Column Responsive Projects Grid */}
+        {/* 2-Column Responsive Projects Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-40px' }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 lg:gap-7 max-w-7xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto"
         >
           {projectsData.map((project) => (
             <motion.div key={project.id} variants={itemVariants} className="h-full">
