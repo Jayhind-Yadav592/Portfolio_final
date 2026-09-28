@@ -140,6 +140,6 @@ export const projectsData = [
       },
     ],
     github: 'https://github.com/Jayhind-Yadav592/medical',
-    liveDemo: 'https://medical-51omgj72e-jayhind-yadavs-projects.vercel.app/',
+    liveDemo: 'https://medical-51omgj72e-jayhind-yadavs-projects.vercel.app/dashboard/',
   },
 ]
