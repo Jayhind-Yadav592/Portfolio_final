@@ -60,7 +60,8 @@ export default function ProjectCard({ project }) {
                   src={currentSlideInfo.image}
                   alt={currentSlideInfo.title || project.title}
                   className="w-full h-full object-cover object-top hover:scale-[1.02] transition-transform duration-500"
-                  loading="eager"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
               </div>

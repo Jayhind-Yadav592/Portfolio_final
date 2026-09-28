@@ -93,6 +93,9 @@ export default function HeroSection() {
           src={heroBgOption2}
           alt=""
           aria-hidden="true"
+          loading="eager"
+          fetchPriority="high"
+          decoding="sync"
           className="w-full h-full object-cover object-right md:object-right-center opacity-85 transition-opacity duration-700"
         />
         {/* Soft Left Linear Overlay for pristine text readability without obscuring 3D elements */}
@@ -534,6 +537,8 @@ export default function HeroSection() {
                     WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%)',
                   }}
                   loading="eager"
+                  fetchPriority="high"
+                  decoding="sync"
                 />
               </div>
             </div>
